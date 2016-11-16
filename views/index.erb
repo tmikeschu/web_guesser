@@ -6,8 +6,15 @@
   </head>
 
   <body>
+    <form>
+      <input type="text" name="guess" />
+      <input type="submit" value="Guess!" />
+    </form>
     <p>
-      "The secret number is <%= secret_number %>"
+      <%= message %>
+    </p>
+    <p>
+      The secret number is <%= secret_number %>
     </p>
   </body>
 
