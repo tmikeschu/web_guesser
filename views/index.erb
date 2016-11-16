@@ -14,7 +14,7 @@
       <%= message %>
     </p>
     <p>
-      The secret number is <%= secret_number %>
+      <%= "The secret number is #{secret_number}" if message.include?("right") %>
     </p>
   </body>
 
