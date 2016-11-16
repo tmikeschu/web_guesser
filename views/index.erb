@@ -8,13 +8,14 @@
   <body>
     <form>
       <input type="text" name="guess" />
-      <input type="submit" value="Guess!" />
+      <input class="btn" type="submit" value="Guess!" />
     </form>
     <p>
       <%= message %>
     </p>
     <p>
-      <%= "The secret number is #{secret_number}." if message.include?("right") %>
+      <%= "Out of guesses! Try again." if guesses == 0 && !message.include?("right") %>
+      <%= "The secret number is #{secret_number}. \nPlay again!" if message.include?("right") %>
     </p>
   </body>
 
