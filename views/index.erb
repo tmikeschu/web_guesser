@@ -17,12 +17,18 @@
       <input class="btn" type="submit" value="Guess!"/>
     </form>
     <div class="message">
-      <p>
+      <p style="background:<%=
+        if message.include?("Way")
+          "red"
+        elsif message.include?("Too")
+          "yellow"
+        end%>; 
+        color:<%= "white" if message.include?("Way")%>;"> 
         <%= message %>
       </p>
-      <p>
+      <p style="background:<%= "green" if message.include?("right")%>; color:<%= "white" if message.include?("right")%>;">
         <%= "Out of guesses! New number generated." if guesses == 0 && !message.include?("right") %>
-        <%= "Guesses left: #{guesses}" if guesses > 0 %>
+        <%= "Guesses left: #{guesses}" if guesses > 0 && !message.include?("right")%>
         <%= "The secret number is #{secret_number}. \nPlay again!" if message.include?("right") %>
       </p>
     </div>
