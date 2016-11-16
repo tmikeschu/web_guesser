@@ -6,7 +6,6 @@ require 'sinatra/reloader'
 
 set :secret_number, rand(101)
 disable :started
-
   
 get '/' do
   check_status
@@ -23,17 +22,26 @@ def check_status
   end
 end
 
-
 def check_guess(guess)
-  unless settings.started? 
-    settings.started = true
-    return "Let's play!"
-  end 
-  message = "Too high!" if guess > settings.secret_number
-  message = "Too low!" if guess < settings.secret_number
-  message.insert(0, "Way ") if (settings.secret_number - guess).abs > 5
-  message = "You got it right!" if guess == settings.secret_number
+  return new_game unless settings.started? 
   @@guesses -= 1
+  high_low_right(guess)
+end
+
+def new_game
+  settings.started = true
+  "Let's play!"
+end
+
+def high_low_right(guess)
+  message = if guess > settings.secret_number
+    "Too high!" 
+  elsif guess < settings.secret_number
+    "Too low!" 
+  else 
+    "You got it right!"
+  end
+  message.insert(0, "Way ") if (settings.secret_number - guess).abs > 5
   message.capitalize
 end
 
