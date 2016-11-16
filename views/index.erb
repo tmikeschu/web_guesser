@@ -3,20 +3,28 @@
 
   <head>
     <title>Web Guesser</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+    <style>
+      * {font-family: 'Roboto Condensed', sans-serif;}
+      .btn {display:block; margin:auto; margin-top: 10px;}
+      .message {display:block; margin:auto; color:purple; text-align:center; font-size:48px;}
+    </style>
   </head>
 
   <body>
     <form>
-      <input type="text" name="guess" />
-      <input class="btn" type="submit" value="Guess!" />
+      <input class="btn" type="text" name="guess" />
+      <input class="btn" type="submit" value="Guess!"/>
     </form>
-    <p>
-      <%= message %>
-    </p>
-    <p>
-      <%= "Out of guesses! Try again." if guesses == 0 && !message.include?("right") %>
-      <%= "The secret number is #{secret_number}. \nPlay again!" if message.include?("right") %>
-    </p>
+    <div class="message">
+      <p>
+        <%= message %>
+      </p>
+      <p>
+        <%= "Out of guesses! Try again." if guesses == 0 && !message.include?("right") %>
+        <%= "The secret number is #{secret_number}. \nPlay again!" if message.include?("right") %>
+      </p>
+    </div>
   </body>
 
 </html>
