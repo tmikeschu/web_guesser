@@ -21,7 +21,8 @@
         <%= message %>
       </p>
       <p>
-        <%= "Out of guesses! Try again." if guesses == 0 && !message.include?("right") %>
+        <%= "Out of guesses! New number generated." if guesses == 0 && !message.include?("right") %>
+        <%= "Guesses left: #{guesses}" if guesses > 0 %>
         <%= "The secret number is #{secret_number}. \nPlay again!" if message.include?("right") %>
       </p>
     </div>
